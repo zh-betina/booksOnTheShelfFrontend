@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.Navbar{
+    &-logo{
+        float: left;
+    }
+}
+
+.Logo-txt{
+    color: #C822FF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;  
+    display: inline;
+    position: absolute;
+    top: -0.35rem;
+    left: 10.9rem;
+    &--low{
+        display: flex;
+    }
+}
