@@ -1,0 +1,19 @@
+$bgrClr: #734046;
+$txtClr: #E6ABFF;
+
+.PrimaryButton{
+    border: none;
+    background-color: $bgrClr;
+    margin: .5rem;
+    height: 5rem;
+    width: auto;
+    color: $txtClr;
+    font-size: 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .3s;
+        &:hover{
+            background-color: lighten($bgrClr, 25%);
+            color: darken($txtClr, 80%);
+        }
+}
