@@ -1,0 +1,34 @@
+$navBtn1Clr: #6DC7FF;
+$navBtn2Clr: #1A6DFF;
+$navBtn3Clr: #C822FF;
+$borderClr: rgba(26, 109, 255, 0.31);
+
+.NavButton{
+    &--v1,
+    &--v2,
+    &--v3{
+        box-sizing: border-box;
+        background-color: transparent;
+        margin-top: 3rem;
+        margin-right: 4rem;
+        border: solid 1px transparent;
+        border-radius: 18px;
+        align-self: center;
+        font-size: 2.6rem;
+        cursor: pointer;
+        height: 6rem;
+        transition: all .3s;
+        &:hover{
+            border-color: $borderClr;
+        }
+    }
+    &--v1{
+        color: $navBtn1Clr;
+    }
+    &--v2{
+        color: $navBtn2Clr;
+    }
+    &--v3{
+        color: $navBtn3Clr;
+    }
+}
