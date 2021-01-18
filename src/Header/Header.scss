@@ -1,0 +1,21 @@
+$h2Clr: #C822FF;
+
+.Header{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-items: center;
+    flex-wrap: wrap;
+    &-svg{
+        margin-top: 3.5rem;
+        margin-left: 6.8rem;
+        width: 45rem;
+    }
+    &-txt,
+    &-txt--label{
+        color: $h2Clr;
+        font-size: 3.8rem;
+        font-weight: 400;
+        width: 100%;
+    }
+}

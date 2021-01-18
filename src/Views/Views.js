@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import "./Views.scss";
+import React from "react";
+import { Route } from 'react-router-dom';
+
 import MainView from "./MainView/MainView";
 
+import "./Views.scss";
+
+
 const Views = () => {
-    let isPageActive = {
-        "homepage": true,
-        "profile": false,
-        "readingHabits": false,
-        "bookcase": false
-    }
 
-
-    return(
-        <MainView pageState={isPageActive.homepage}/>
+    return (
+        <React.Fragment>
+            <Route path="/" exact component={MainView} />
+        </React.Fragment>
     )
 }
 

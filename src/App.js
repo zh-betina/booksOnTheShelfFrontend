@@ -1,11 +1,15 @@
+import { BrowserRouter } from 'react-router-dom';
+
 import './App.scss';
 import Views from './Views/Views';
 
-const App = ()=> {
+const App = () => {
   return (
-    <div className="App">
-      <Views/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Views />
+      </div>
+    </BrowserRouter>
   );
 }
 

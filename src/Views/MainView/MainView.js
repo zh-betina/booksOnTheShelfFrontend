@@ -1,8 +1,14 @@
-import Navbar from "../../Navbar/Navbar";
+import React from "react";
 
-const MainView = ()=> {
-    return(
-        <Navbar/>
+import Navbar from "../../Navbar/Navbar";
+import Header from "../../Header/Header";
+
+const MainView = () => {
+    return (
+        <React.Fragment>
+            <Navbar isMainPage={true} />
+            <Header />
+        </React.Fragment>
     )
 }
 

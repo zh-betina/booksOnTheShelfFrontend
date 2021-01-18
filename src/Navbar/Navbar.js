@@ -1,14 +1,28 @@
+import Logo from "./Logo";
+
+import NavButton from "../Button/NavButton";
+
 import "./Navbar.scss";
-import logo from "./logo.svg";
 
 
 const Navbar = (props) => {
-    return(
-        <nav className="Navbar">
-            <img src={logo} class="Navbar-logo" alt="Logo"></img>
-            <h1 className="Logo-txt">BooksOn<span className="Logo-txt--low">theShelf</span></h1>
-        </nav>
-    )
+    const isMainPage = props.isMainPage;
+    if (isMainPage) {
+        return (
+            <nav className="Navbar">
+                <Logo />
+            </nav>
+        )
+    } else {
+        return (
+            <nav className="Navbar">
+                <Logo/>
+                <NavButton href="/bookcase" class="NavButton--v1" txt="Bookcase" />
+                <NavButton href="/habits" class="NavButton--v2" txt="Reading habits" />
+                <NavButton href="/profile" class="NavButton--v3" txt="Profile" />
+            </nav>
+        )
+    }
 }
 
 export default Navbar;
