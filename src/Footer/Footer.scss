@@ -1,0 +1,44 @@
+$ftTxtClr: #1A6DFF;
+$linkClr: #E6ABFF;
+
+.Footer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: fixed;
+    right: 2rem;
+    padding-right: 2rem;
+    bottom: 0;
+    padding-bottom: 1vh;
+    width: 100vw;
+        &-icon{
+            width: 3.5rem;
+            margin: .3rem;
+        }
+        &-txt{
+            color: $ftTxtClr;
+            font-size: 1.4rem;
+        }
+        &-link{
+            font-size: 1.3rem;
+            margin: .3rem;
+            transform: all .3s;
+            &:link,
+            &:active,
+            &:visited{
+                text-decoration: none;
+                    color: $linkClr;
+            }
+            &:hover{
+                color: lighten($linkClr, 80%);
+            }
+        }
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+    align-content: space-between;
+}
