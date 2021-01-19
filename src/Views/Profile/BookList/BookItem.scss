@@ -1,0 +1,30 @@
+$bookItemBgrClr: rgba(133, 146, 226, .1);
+
+.BookItem{
+    margin: 1rem;
+    padding: 2rem;
+    background-color: $bookItemBgrClr;
+    border-radius: 8px;
+        &-txt{
+            text-align: center;
+            margin: 0;
+                &--author{
+                    font-size: 1.6rem;
+                    color: #7ca3ff;
+                    text-transform: uppercase;
+                }
+                &--title{
+                    font-size: 1.5rem;
+                    color: #b994fc;
+                    text-transform: capitalize;
+                }
+                &--pages{
+                    font-size: 1.3rem;
+                    color: #ef93f9;
+                }
+        }
+        &-img{
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+}

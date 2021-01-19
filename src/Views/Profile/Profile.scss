@@ -1,5 +1,4 @@
 $txtPrimaryClr: #C467E3;
-$h3HeadingClr: #9CD5F8;
 
 .txt-primary,
 .Profile-heading-txt{
@@ -9,7 +8,7 @@ $h3HeadingClr: #9CD5F8;
 .Profile{
     &-heading{
     text-align: center;
-    margin-top: 8rem;
+    margin-top: 3rem;
         &-txt{
             font-size: 3rem;
             font-weight: 500;
@@ -18,22 +17,12 @@ $h3HeadingClr: #9CD5F8;
     &-books{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        margin-top: 5rem;
+        justify-content: center;
+        margin-left: 4rem;
+        margin-right: 4rem;
     }
 }
 
-.Booklist{
-    overflow-y: scroll;
-    margin-bottom: 3rem;
-    border: solid 1px #9CD5F8;
-    &-heading{
-        font-size: 2.5rem;
-        color: $h3HeadingClr;
-        font-weight: 400;
-        position: fixed;
-    }
-}
 
 .txt-primary{
     font-size: 2.5rem;

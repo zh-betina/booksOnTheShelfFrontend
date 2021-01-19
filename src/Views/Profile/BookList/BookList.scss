@@ -1,0 +1,29 @@
+$h3HeadingClr: #9CD5F8;
+$scrollbarClr: rgba(133, 146, 226, .1); 
+
+
+.BookList{
+    box-sizing: border-box;
+    margin: 0 4rem 0 0;
+    &-heading{
+        font-size: 2.5rem;
+        color: $h3HeadingClr;
+        font-weight: 400;
+        text-align: center;
+    }
+    &-wrapper{
+        border: solid 1px #9CD5F8;
+        border-radius: 20px;
+        overflow-y: scroll;
+        width: 50rem;
+        max-width: 50rem;
+        max-height: 20rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        scrollbar-color: $scrollbarClr #321F28;
+        scrollbar-width: auto;
+    }
+}
