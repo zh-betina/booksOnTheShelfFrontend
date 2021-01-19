@@ -1,4 +1,6 @@
 $h2Clr: #C822FF;
+$borderClr: #6DC7FF;
+
 
 .Header{
     display: flex;
@@ -23,5 +25,15 @@ $h2Clr: #C822FF;
         position: relative;
         left: 60rem;
         bottom: 20rem;
+    }
+    &-input{
+        background-color: transparent;
+        border: solid 1px $borderClr;
+        border-radius: 8px;
+        height: 5rem;
+        width: 10rem;
+        font-size: 2rem;
+        text-align: center;
+        color: $borderClr;
     }
 }

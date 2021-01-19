@@ -13,7 +13,7 @@ const Header = () => {
             <div className="Header-col">
                 <h2 className="Header-txt">How many pages have you read today?</h2>
                 <label className="Header-txt--label">
-                    <input className="Header-input" type="number"></input> pages.
+                    <input id="pages" className="Header-input" type="number"></input> pages.
                 </label>
             </div>
             <div className="Header-col-btns">
