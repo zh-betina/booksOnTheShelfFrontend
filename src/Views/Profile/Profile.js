@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Navbar from "../../Navbar/Navbar";
 import BookList from "./BookList/BookList";
 import BookItem from "./BookList/BookItem";
 
+import book from "./BookList/book.svg";
+
+import getList from "./BookList/getList";
 import "./Profile.scss";
 
 const Profile = () => {
+
+    const [booklist, setBooklist] = useState([{ id: null, author: null, title: null, img: null, pages: null }]);
+
+    useEffect(() => {
+        let data;
+        const method = "GET";
+        const url = "http://localhost:8080/botsab/books";
+        getList(data, url, method)
+            .then((data) => {
+                const loadedBooks = [];
+                for (const key in data) {
+                    loadedBooks.push({
+                        id: data[key].id,
+                        author: data[key].author,
+                        title: data[key].title,
+                        pages: data[key].pages
+                    });
+                };
+                return setBooklist(loadedBooks);
+            });
+    }, []);
     const name = "Guest Reader";
     const pages = Math.floor(Math.random() * 1200);
     return (
@@ -24,15 +48,18 @@ const Profile = () => {
             </section>
             <section className="Profile-books">
                 <BookList heading="Recently read:">
-                    <BookItem id="1" author="A. Mickiewicz" title="Dziady" pages="12/500" />
-                    <BookItem id="2" author="H.Sienkiewicz" title="Potop" pages="12/500" />
-                    <BookItem id="3" author="T.W. Rinpocze" title="Joga Snu i Śnienia" pages="12/500" />
-
+                    {
+                        booklist.map((items, index) => {
+                            return <BookItem {...items} key={index} img={book}/>
+                        })
+                    }
                 </BookList>
                 <BookList heading="Reading:">
-                    <BookItem id="3" author="J.K. Rowling" title="Harry Potter" pages="300/500"/>
-                    <BookItem id="1" author="A. Mickiewicz" title="Dziady" pages="12/500" />
-                    <BookItem id="2" author="H.Sienkiewicz" title="Potop" pages="12/500" />
+                    {
+                        booklist.map((items, index) => {
+                            return <BookItem {...items} key={index} img={book} />
+                        })
+                    }
                 </BookList>
             </section>
         </React.Fragment>
