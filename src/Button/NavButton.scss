@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 $navBtn1Clr: #6DC7FF;
 $navBtn2Clr: #1A6DFF;
 $navBtn3Clr: #C822FF;
@@ -7,6 +9,7 @@ $borderClr: rgba(26, 109, 255, 0.31);
     &--v1,
     &--v2,
     &--v3{
+        font-family: 'Audiowide', cursive;
         box-sizing: border-box;
         background-color: transparent;
         margin-top: 3rem;

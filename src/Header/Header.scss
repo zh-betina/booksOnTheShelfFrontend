@@ -3,16 +3,20 @@ $borderClr: #6DC7FF;
 
 
 .Header{
+    //max-height: 40vh;
+    font-family: 'Audiowide', cursive;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-items: center;
-    flex-wrap: wrap;
-    max-height: 40vh;
-    &-svg{
-        margin-top: 3.5rem;
-        margin-left: 6.8rem;
-        width: 45rem;
+    justify-content: center;
+    @media (max-width: 900px){
+        flex-direction: column;
+    }
+    &-col{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        //flex-wrap: wrap;
     }
     &-txt,
     &-txt--label{
@@ -20,11 +24,14 @@ $borderClr: #6DC7FF;
         font-size: 3.8rem;
         font-weight: 400;
         width: 100%;
+        text-align: center;
     }
-    &-col-btns{
-        position: relative;
-        left: 60rem;
-        bottom: 20rem;
+    &-row-btns{
+        display: flex;
+        flex-direction: row;
+        @media (max-width: 900px){
+            flex-direction: column;
+        }
     }
     &-input{
         background-color: transparent;
@@ -35,5 +42,10 @@ $borderClr: #6DC7FF;
         font-size: 2rem;
         text-align: center;
         color: $borderClr;
+    }
+    &-img{
+        @media (max-width: 900px){
+            width: 30%;
+        }
     }
 }

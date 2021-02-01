@@ -6,6 +6,7 @@ import "./Navbar.scss";
 
 
 const Navbar = (props) => {
+
     const isMainPage = props.isMainPage;
     if (isMainPage) {
         return (

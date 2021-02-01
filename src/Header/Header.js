@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import header from "./Header.svg";
+import header from "./header.svg";
 import PrimaryButton from "../Button/PrimaryButton";
 
 import "./Header.scss";
@@ -9,16 +9,16 @@ import "./Header.scss";
 const Header = () => {
     return (
         <header className="Header">
-            <img src={header} alt="Woman reading a book" className="Header-svg"></img>
+            <img className="Header-img" src={header} alt="Woman reading a book"></img>
             <div className="Header-col">
                 <h2 className="Header-txt">How many pages have you read today?</h2>
                 <label className="Header-txt--label">
                     <input id="pages" className="Header-input" type="number"></input> pages.
                 </label>
-            </div>
-            <div className="Header-col-btns">
-                <Link to="/profile"><PrimaryButton txt="Save my reading progress" /></Link>
-                <Link to="/profile"><PrimaryButton txt="Don't save it and carry on" /></Link>
+                <div className="Header-row-btns">
+                    <Link to="/profile"><PrimaryButton txt="Save my reading progress" /></Link>
+                    <Link to="/profile"><PrimaryButton txt="Don't save it and carry on" /></Link>
+                </div>
             </div>
         </header>
     )
