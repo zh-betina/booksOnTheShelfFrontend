@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import header from "./header.svg";
+import header from "./header.png";
 import PrimaryButton from "../Button/PrimaryButton";
 
 import "./Header.scss";

@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Coda+Caption:wght@800&family=Kanit&display=swap');
+
+
 
 $navBtn1Clr: #6DC7FF;
 $navBtn2Clr: #1A6DFF;
@@ -9,7 +11,7 @@ $borderClr: rgba(26, 109, 255, 0.31);
     &--v1,
     &--v2,
     &--v3{
-        font-family: 'Audiowide', cursive;
+        font-family: 'Kanit', sans-serif;
         box-sizing: border-box;
         background-color: transparent;
         margin-top: 3rem;

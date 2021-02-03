@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
 $h2Clr: #C822FF;
 $borderClr: #6DC7FF;
 
 
 .Header{
     //max-height: 40vh;
-    font-family: 'Audiowide', cursive;
+    font-family: 'Cinzel', serif;    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -39,9 +41,10 @@ $borderClr: #6DC7FF;
         border-radius: 8px;
         height: 5rem;
         width: 10rem;
-        font-size: 2rem;
+        font-size: 3rem;
         text-align: center;
         color: $borderClr;
+        font-family: 'Cinzel', serif;
     }
     &-img{
         @media (max-width: 900px){
