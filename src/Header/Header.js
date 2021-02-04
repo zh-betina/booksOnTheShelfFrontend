@@ -1,25 +1,80 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 import header from "./header.png";
 import PrimaryButton from "../Button/PrimaryButton";
 
+import { signIn, signUp } from "../Header/inputList";
+
+
 import "./Header.scss";
+import SignForm from "../SignIn_SignUp/SignForm";
 
 const Header = () => {
+    const[signInUp, setSignInUp] = useState({
+        classInput: "hidden", 
+        classHeader: "Header-col", 
+        title: null, input: null, 
+        btnTxt1: null, 
+        btnTxt2: null, 
+        eventFunc: null,
+        url: null});
+    const[data, setData] = useState({pages: 0, name: null, date: null})
+
+    const handleClick = ()=>{
+        setSignInUp({
+            classInput: "SignForm", 
+            classHeader: "hidden", 
+            title: "Sign In", 
+            input: signIn, 
+            btnTxt1: "Sign in", 
+            btnTxt2: "Go back to create an account", 
+            eventFunc: toSignUp,
+            method: "POST",
+            data: data,
+            url: "https://booksontheshelfbackend.herokuapp.com/botsab/reader"})
+    }
+
+    const toSignUp = ()=>{
+        setSignInUp({
+            classInput: "SignForm", 
+            classHeader: "hidden", 
+            title: "Sign Up", 
+            input: signUp, 
+            btnTxt1: "Sign Up", 
+            btnTxt2: "Go back to login page", 
+            eventFunc: handleClick,
+            method: "POST",
+            data: data,
+            url: "https://booksontheshelfbackend.herokuapp.com/botsab/reader"})
+    }
+
     return (
         <header className="Header">
             <img className="Header-img" src={header} alt="Woman reading a book"></img>
-            <div className="Header-col">
+            <div className={signInUp.classHeader}>
                 <h2 className="Header-txt">How many pages have you read today?</h2>
                 <label className="Header-txt--label">
-                    <input id="pages" className="Header-input" type="number"></input> pages.
+                    <input 
+                        onChange={(e)=>{setData({pages: e.target.value, name: null, date: null})}} 
+                        id="pages" 
+                        className="Header-input" 
+                        type="number"></input> pages.
                 </label>
                 <div className="Header-row-btns">
-                    <Link to="/profile"><PrimaryButton txt="Save my reading progress" /></Link>
-                    <Link to="/profile"><PrimaryButton txt="Don't save it and carry on" /></Link>
+                    <PrimaryButton event={()=>{handleClick()}} txt="Save my reading progress" />
+                    <PrimaryButton event={()=>{handleClick()}} txt="Don't save it and carry on" />
                 </div>
             </div>
+            <SignForm 
+                class={signInUp.classInput} 
+                event={()=>{signInUp.eventFunc()}} 
+                title={signInUp.title} 
+                input={signInUp.input} 
+                btnTxt1={signInUp.btnTxt1} 
+                btnTxt2={signInUp.btnTxt2}
+                data={data}
+                url={signInUp.url}
+                method={signInUp.method}/>
         </header>
     )
 }

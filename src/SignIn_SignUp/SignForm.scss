@@ -1,0 +1,8 @@
+.SignForm{
+    display: flex;
+    flex-direction: column;
+    &-txt{
+        font-size: 2rem;
+        color: white;
+    }
+}
