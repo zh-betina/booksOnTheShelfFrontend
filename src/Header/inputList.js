@@ -1,15 +1,16 @@
 const signIn = [
     {
-        name: "Your ID",
-        labelTxt: "userId",
-        type: "text"
-    }
-/*   {
+        name: "userId",
+        labelTxt: "Your user ID",
+        type: "number"
+    },
+   {
         name: "password",
-        labelTxt: "Password",
+        labelTxt: "Please, leave the field below empty. We are working to make the REAL user account creation possible.",
         type: "password"
-    }*/
+    }
 ]
+
 const signUp = [{
     name: "nickname",
     labelTxt: "Nickname",

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Logo from "./Logo";
 
 import NavButton from "../Button/NavButton";
@@ -11,7 +13,7 @@ const Navbar = (props) => {
     if (isMainPage) {
         return (
             <nav className="Navbar">
-                <Logo />
+                <Link to="/"><Logo /></Link>
             </nav>
         )
     } else {
