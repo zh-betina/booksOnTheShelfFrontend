@@ -11,12 +11,14 @@ import "./Profile.scss";
 
 const Profile = () => {
 
+    let userId;
     const [booklist, setBooklist] = useState([{ id: null, author: null, title: null, img: null, pages: null }]);
-
+    //const [userId, setUserId] = useState(null);
+    console.log(userId);
     useEffect(() => {
         let data;
         const method = "GET";
-        const url = "http://localhost:8080/botsab/books";
+        const url = `https://booksontheshelfbackend.herokuapp.com/botsab/reader/%7Bid%7D?id=${userId}`;
         getList(data, url, method)
             .then((data) => {
                 const loadedBooks = [];
@@ -33,6 +35,14 @@ const Profile = () => {
     }, []);
     const name = "Guest Reader";
     const pages = Math.floor(Math.random() * 1200);
+
+    /**todo: if (isLogged == false) {
+        return (
+            <React.Fragment>
+                <Navbar isMainPage={false} />
+            </React.Fragment>
+        )
+    }*/
     return (
         <React.Fragment>
             <Navbar isMainPage={false} />
@@ -50,7 +60,7 @@ const Profile = () => {
                 <BookList heading="Recently read:">
                     {
                         booklist.map((items, index) => {
-                            return <BookItem {...items} key={index} img={book}/>
+                            return <BookItem {...items} key={index} img={book} />
                         })
                     }
                 </BookList>

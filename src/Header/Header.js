@@ -13,12 +13,13 @@ const Header = () => {
     const[signInUp, setSignInUp] = useState({
         classInput: "hidden", 
         classHeader: "Header-col", 
-        title: null, input: null, 
+        title: null, 
+        input: null, 
         btnTxt1: null, 
         btnTxt2: null, 
         eventFunc: null,
         url: null});
-    const[data, setData] = useState({pages: 0, name: null, date: null})
+    const[data, setData] = useState({pages: [null], name: null})
 
     const handleClick = ()=>{
         setSignInUp({
@@ -55,7 +56,7 @@ const Header = () => {
                 <h2 className="Header-txt">How many pages have you read today?</h2>
                 <label className="Header-txt--label">
                     <input 
-                        onChange={(e)=>{setData({pages: e.target.value, name: null, date: null})}} 
+                        onChange={(e)=>{setData({pages: [parseInt(e.target.value)], name: null})}} 
                         id="pages" 
                         className="Header-input" 
                         type="number"></input> pages.

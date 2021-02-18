@@ -1,14 +1,14 @@
 const signIn = [
     {
-        name: "username",
-        labelTxt: "Username",
+        name: "Your ID",
+        labelTxt: "userId",
         type: "text"
-    },
-    {
+    }
+/*   {
         name: "password",
         labelTxt: "Password",
         type: "password"
-    }
+    }*/
 ]
 const signUp = [{
     name: "nickname",
