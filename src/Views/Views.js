@@ -21,7 +21,5 @@ const Views = () => {
     )
 }
 
-//todo <Route path="/login" component={LoginForm} />
-
 
 export default Views;

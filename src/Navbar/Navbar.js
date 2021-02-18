@@ -19,7 +19,7 @@ const Navbar = (props) => {
     } else {
         return (
             <nav className="Navbar">
-                <Logo />
+                <Link to="/"><Logo /></Link>
                 <div>
                     <NavButton href="/bookcase" class="NavButton--v1" txt="Bookcase" />
                     <NavButton href="/habits" class="NavButton--v2" txt="Reading habits" />

@@ -11,10 +11,9 @@ import "./Profile.scss";
 
 const Profile = () => {
 
-    let userId;
     const [booklist, setBooklist] = useState([{ id: null, author: null, title: null, img: null, pages: null }]);
-    //const [userId, setUserId] = useState(null);
-    console.log(userId);
+    const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [pages, setPages] = useState(Math.floor(Math.random() * 1200))
     useEffect(() => {
         let data;
         const method = "GET";
@@ -22,27 +21,19 @@ const Profile = () => {
         getList(data, url, method)
             .then((data) => {
                 const loadedBooks = [];
-                for (const key in data) {
+                for (const key in data.books) {
                     loadedBooks.push({
-                        id: data[key].id,
-                        author: data[key].author,
-                        title: data[key].title,
-                        pages: data[key].pages
+                        id: data.books[key].id,
+                        author: data.books[key].author,
+                        title: data.books[key].title,
+                        pages: data.books[key].pages
                     });
                 };
-                return setBooklist(loadedBooks);
+                setBooklist(loadedBooks);
+                //setPages(data.pages[0].pagesRead)
             });
     }, []);
     const name = "Guest Reader";
-    const pages = Math.floor(Math.random() * 1200);
-
-    /**todo: if (isLogged == false) {
-        return (
-            <React.Fragment>
-                <Navbar isMainPage={false} />
-            </React.Fragment>
-        )
-    }*/
     return (
         <React.Fragment>
             <Navbar isMainPage={false} />

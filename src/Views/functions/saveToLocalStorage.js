@@ -1,3 +1,3 @@
-const saveToLocalStorage = (key, name) => { return localStorage.setItem(key, name) }
+const saveToLocalStorage = (key, item) => { return localStorage.setItem(key, item) }
 
 export default saveToLocalStorage;
