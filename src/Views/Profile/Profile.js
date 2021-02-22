@@ -13,13 +13,16 @@ const Profile = () => {
 
     const [booklist, setBooklist] = useState([{ id: null, author: null, title: null, img: null, pages: null }]);
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
-    const [pages, setPages] = useState(Math.floor(Math.random() * 1200))
+    const [pages, setPages] = useState(Math.floor(Math.random() * 1200));
+    const [userName, setUserName] = useState("Guest Reader");
     useEffect(() => {
         let data;
         const method = "GET";
-        const url = `https://booksontheshelfbackend.herokuapp.com/botsab/reader/%7Bid%7D?id=${userId}`;
+        const url = `https://booksontheshelfbackend.herokuapp.com/botsab/reader?id=${userId}`;
         getList(data, url, method)
             .then((data) => {
+                console.log(data);
+                setUserName(data.name);
                 const loadedBooks = [];
                 for (const key in data.books) {
                     loadedBooks.push({
@@ -33,12 +36,11 @@ const Profile = () => {
                 //setPages(data.pages[0].pagesRead)
             });
     }, []);
-    const name = "Guest Reader";
     return (
         <React.Fragment>
             <Navbar isMainPage={false} />
             <section className="Profile-heading">
-                <h2 className="Profile-heading-txt">Hi, {name}!</h2>
+                <h2 className="Profile-heading-txt">Hi, {userName}!</h2>
                 <p className="txt-primary">
                     <select>
                         <option className="txt-primary" value="year">This year</option>

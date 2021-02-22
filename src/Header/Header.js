@@ -11,31 +11,12 @@ import saveToLocalStorage from "../Views/functions/saveToLocalStorage";
 import "./Header.scss";
 
 const Header = () => {
-    const[signInUp, setSignInUp] = useState({
-        classInput: "hidden", 
-        classHeader: "Header-col", 
-        title: null, 
-        input: null, 
-        btnTxt1: null, 
-        btnTxt2: null});
-
     const[pages, setPages] = useState({pages: null})
-
-    const toSignUp = ()=>{
-        setSignInUp({
-            classInput: "SignForm", 
-            classHeader: "hidden", 
-            title: "Sign Up", 
-            input: signUp, 
-            btnTxt1: "Sign Up", 
-            btnTxt2: "Go back to login page"
-        })
-    }
 
     return (
         <header className="Header">
             <img className="Header-img" src={header} alt="Woman reading a book"></img>
-            <div className={signInUp.classHeader}>
+            <div className="Header-col">
                 <h2 className="Header-txt">How many pages have you read today?</h2>
                 <label className="Header-txt--label">
                     <input 

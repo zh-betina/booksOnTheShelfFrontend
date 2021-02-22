@@ -13,7 +13,7 @@ const signIn = [
 
 const signUp = [{
     name: "nickname",
-    labelTxt: "Nickname",
+    labelTxt: "Your nickname",
     type: "text"
 }]
 
