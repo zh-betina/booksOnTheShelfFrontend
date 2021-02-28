@@ -13,7 +13,7 @@ const Bookcases = () => {
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [bookcases, setBookcases] = useState(null);
     let bookcasesIsLoaded;
-    if(bookcases == null || []){
+    if(bookcases == null || bookcases.length == 0){
         bookcasesIsLoaded = false;
     }else{
         bookcasesIsLoaded = true;
