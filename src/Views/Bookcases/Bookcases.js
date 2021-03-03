@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import getList from "../functions/getList";
 
 import Navbar from "../../Navbar/Navbar";
 import ShelvesSvg from "./ShelvesSvg";
 import Bookcase from "./Bookcase";
+import PrimaryButton from "../../Button/PrimaryButton";
+import Input from "../../Input/Input";
+//import BookForm from "./BookForm";
 
 import "./Bookcases.scss";
 
@@ -12,11 +16,31 @@ const Bookcases = () => {
 
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [bookcases, setBookcases] = useState(null);
+    const [bookcaseName, setBookcaseName] = useState(null);
     let bookcasesIsLoaded;
-    if(bookcases == null || bookcases.length == 0){
+    const history = useHistory();
+    if (bookcases == null || bookcases.length == 0) {
         bookcasesIsLoaded = false;
-    }else{
+    } else {
         bookcasesIsLoaded = true;
+    }
+
+    const handleAddBookcase = (e)=>{
+        console.log("Bookcase name", bookcaseName);
+        e.preventDefault();
+        let data = bookcaseName;
+        const method = "POST";
+        const url = `https://booksontheshelfbackend.herokuapp.com/botsab/bookcase`;
+        getList(data, url, method)
+            .then((data)=>{
+                const url = `https://booksontheshelfbackend.herokuapp.com/botsab/addbookcasetoreader?id=${userId}&bookcaseId=${data.id}`;
+                data = undefined;
+                const method = "PUT";
+                getList(data, url, method)
+                    .then(()=>{
+                        history.push('/bookcases');
+                    })
+            });
     }
 
     useEffect(() => {
@@ -43,12 +67,17 @@ const Bookcases = () => {
             <main className="Bookcases--wrapper">
                 <ShelvesSvg />
                 <section className="Bookcases__section">
-                <h3 className="Bookcases-heading-txt">My Bookcases</h3>
-                {
-                    bookcasesIsLoaded ? bookcases.map((items, index) => {
-                        return <Bookcase {...items} key={index} />
-                    }) : <p className="txt-primary">You have not created any bookcases.</p>
-                }
+                    <h3 className="Bookcases-heading-txt">My Bookcases</h3>
+                        <PrimaryButton event={handleAddBookcase} txt="Add a new bookcase" />
+                        <Input name="addBookcase" labelTxt="Bookcase name" type="text" event={(e)=> setBookcaseName({"tag": e.target.value})} />
+                        <PrimaryButton event={handleAddBookcase} txt="Add a new book" />
+                    <div className="Bookcases-collection-wrapper">
+                        {
+                            bookcasesIsLoaded ? bookcases.map((items, index) => {
+                                return <Bookcase {...items} key={index} />
+                            }) : <p className="txt-primary">You have not created any bookcases.</p>
+                        }
+                    </div>
                 </section>
             </main>
         </React.Fragment>

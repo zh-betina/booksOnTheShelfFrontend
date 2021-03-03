@@ -20,4 +20,9 @@ $headingTxt: #6DC7FF;
         font-size: 2.5rem;
         font-weight: 500;
     }
+    &-collection-wrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
