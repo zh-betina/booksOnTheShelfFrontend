@@ -2,7 +2,8 @@ const signIn = [
     {
         name: "userId",
         labelTxt: "Your user ID",
-        type: "number"
+        type: "number",
+        placeholder: "User ID"
     },
    {
         name: "password",
