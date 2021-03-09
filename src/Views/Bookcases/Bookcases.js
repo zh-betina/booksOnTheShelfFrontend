@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import getList from "../functions/getList";
+import submitFile from "../functions/submitFile";
 
 import Navbar from "../../Navbar/Navbar";
 import ShelvesSvg from "./ShelvesSvg";
@@ -17,6 +18,7 @@ const Bookcases = () => {
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [bookcases, setBookcases] = useState(null);
     const [bookcaseName, setBookcaseName] = useState(null);
+    const [uploadedFile, setUploadedFile] = useState(null);
     let bookcasesIsLoaded;
     const history = useHistory();
     if (bookcases == null || bookcases.length == 0) {
@@ -41,6 +43,14 @@ const Bookcases = () => {
                         history.push('/bookcases');
                     })
             });
+    }
+
+    const handleFileSubmit = ()=>{
+        let formData = new FormData();
+        formData.append('file', uploadedFile);
+        console.log(uploadedFile);
+        submitFile(formData, 'POST', 'https://booksontheshelfbackend.herokuapp.com/botsab/uploadFile');
+
     }
 
     useEffect(() => {
@@ -70,6 +80,8 @@ const Bookcases = () => {
                     <h3 className="Bookcases-heading-txt">My Bookcases</h3>
                         <PrimaryButton event={handleAddBookcase} txt="Add a new bookcase" />
                         <Input name="addBookcase" labelTxt="Bookcase name" type="text" event={(e)=> setBookcaseName({"tag": e.target.value})} />
+                        <Input name="uploadCover" labelTxt="Upload a book cover" type="file" event={(e) => setUploadedFile(e.target.files[0])}/>
+                        <PrimaryButton event={handleFileSubmit} txt="Upload the book cover" />
                         <PrimaryButton event={handleAddBookcase} txt="Add a new book" />
                     <div className="Bookcases-collection-wrapper">
                         {
