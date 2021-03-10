@@ -9,6 +9,7 @@ import ShelvesSvg from "./ShelvesSvg";
 import Bookcase from "./Bookcase";
 import PrimaryButton from "../../Button/PrimaryButton";
 import Input from "../../Input/Input";
+import Loader from "../../Loader/Loader";
 //import BookForm from "./BookForm";
 
 import "./Bookcases.scss";
@@ -19,6 +20,8 @@ const Bookcases = () => {
     const [bookcases, setBookcases] = useState(null);
     const [bookcaseName, setBookcaseName] = useState(null);
     const [uploadedFile, setUploadedFile] = useState(null);
+    const [inputVisible, setInputVisible] = useState(false);
+    const [loader, setLoader] = useState(false);
     let bookcasesIsLoaded;
     const history = useHistory();
     if (bookcases == null || bookcases.length == 0) {
@@ -27,25 +30,27 @@ const Bookcases = () => {
         bookcasesIsLoaded = true;
     }
 
-    const handleAddBookcase = (e)=>{
+    const handleAddBookcase = (e) => {
         console.log("Bookcase name", bookcaseName);
         e.preventDefault();
         let data = bookcaseName;
         const method = "POST";
         const url = `https://booksontheshelfbackend.herokuapp.com/botsab/bookcase`;
         getList(data, url, method)
-            .then((data)=>{
+            .then((data) => {
                 const url = `https://booksontheshelfbackend.herokuapp.com/botsab/addbookcasetoreader?id=${userId}&bookcaseId=${data.id}`;
                 data = undefined;
                 const method = "PUT";
                 getList(data, url, method)
-                    .then(()=>{
-                        history.push('/bookcases');
-                    })
+                    .then(() => {
+                        setInputVisible(false)
+                        setLoader(true)
+                        window.location.reload(false);
+                    });
             });
     }
 
-    const handleFileSubmit = ()=>{
+    const handleFileSubmit = () => {
         let formData = new FormData();
         formData.append('file', uploadedFile);
         console.log(uploadedFile);
@@ -78,11 +83,18 @@ const Bookcases = () => {
                 <ShelvesSvg />
                 <section className="Bookcases__section">
                     <h3 className="Bookcases-heading-txt">My Bookcases</h3>
-                        <PrimaryButton event={handleAddBookcase} txt="Add a new bookcase" />
-                        <Input name="addBookcase" labelTxt="Bookcase name" type="text" event={(e)=> setBookcaseName({"tag": e.target.value})} />
-                        <Input name="uploadCover" labelTxt="Upload a book cover" type="file" event={(e) => setUploadedFile(e.target.files[0])}/>
-                        <PrimaryButton event={handleFileSubmit} txt="Upload the book cover" />
-                        <PrimaryButton event={handleAddBookcase} txt="Add a new book" />
+                    <PrimaryButton event={(e) => { setInputVisible(true) }} txt="Add a bookcase" />
+                    {
+                        loader ? <Loader/> : null
+                    }
+                    {
+                        inputVisible ? <React.Fragment><Input name="addBookcase"
+                            labelTxt="Bookcase name"
+                            type="text"
+                            event={(e) => setBookcaseName({ "tag": e.target.value })} />
+                            <PrimaryButton event={handleAddBookcase} txt="Save bookcase" /></React.Fragment> : null
+                    }
+                    <PrimaryButton event={handleAddBookcase} txt="Add a new book" />
                     <div className="Bookcases-collection-wrapper">
                         {
                             bookcasesIsLoaded ? bookcases.map((items, index) => {
