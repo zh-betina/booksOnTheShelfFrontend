@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux';
 
 import Navbar from "../../Navbar/Navbar";
 import BookList from "./BookList/BookList";
@@ -9,16 +10,15 @@ import book from "./BookList/book.svg";
 import getList from "./BookList/getList";
 import "./Profile.scss";
 
-const Profile = () => {
+const Profile = props => {
 
     const [booklist, setBooklist] = useState([{ id: null, author: null, title: null, img: null, pages: null }]);
-    const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [pages, setPages] = useState(Math.floor(Math.random() * 1200));
     const [userName, setUserName] = useState("Guest Reader");
     useEffect(() => {
         let data;
         const method = "GET";
-        const url = `https://booksontheshelfbackend.herokuapp.com/botsab/reader?id=${userId}`;
+        const url = `https://booksontheshelfbackend.herokuapp.com/botsab/reader?id=${props.userId}`;
         getList(data, url, method)
             .then((data) => {
                 console.log(data);
@@ -69,4 +69,10 @@ const Profile = () => {
     )
 }
 
-export default Profile;
+const mapStateToProps = state => {
+    return {
+        userId: state.id
+    };
+}
+
+export default connect(mapStateToProps)(Profile);

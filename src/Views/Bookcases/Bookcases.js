@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 
 import getList from "../functions/getList";
-import submitFile from "../functions/submitFile";
 
 import Navbar from "../../Navbar/Navbar";
 import ShelvesSvg from "./ShelvesSvg";
@@ -10,7 +8,7 @@ import Bookcase from "./Bookcase";
 import PrimaryButton from "../../Button/PrimaryButton";
 import Input from "../../Input/Input";
 import Loader from "../../Loader/Loader";
-//import BookForm from "./BookForm";
+import BookForm from "./BookForm";
 
 import "./Bookcases.scss";
 
@@ -19,11 +17,13 @@ const Bookcases = () => {
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [bookcases, setBookcases] = useState(null);
     const [bookcaseName, setBookcaseName] = useState(null);
-    const [uploadedFile, setUploadedFile] = useState(null);
     const [inputVisible, setInputVisible] = useState(false);
     const [loader, setLoader] = useState(false);
+    const [bookcasesClass, setBookcasesClass] = useState(" flex");
+    const [bookFormClass, setBookFormClass] = useState(" hidden");
+    const classes = "Bookcases-collection-wrapper" + bookcasesClass;
+    const classes2 = "BookForm-wrapper" + bookFormClass;
     let bookcasesIsLoaded;
-    const history = useHistory();
     if (bookcases == null || bookcases.length == 0) {
         bookcasesIsLoaded = false;
     } else {
@@ -45,17 +45,14 @@ const Bookcases = () => {
                     .then(() => {
                         setInputVisible(false)
                         setLoader(true)
-                        window.location.reload(false);
+                        window.location.reload();
                     });
             });
     }
 
-    const handleFileSubmit = () => {
-        let formData = new FormData();
-        formData.append('file', uploadedFile);
-        console.log(uploadedFile);
-        submitFile(formData, 'POST', 'https://booksontheshelfbackend.herokuapp.com/botsab/uploadFile');
-
+    const handleAddBook = (e) =>{
+        setBookFormClass(" flex");
+        setBookcasesClass(" hidden");
     }
 
     useEffect(() => {
@@ -92,15 +89,18 @@ const Bookcases = () => {
                             labelTxt="Bookcase name"
                             type="text"
                             event={(e) => setBookcaseName({ "tag": e.target.value })} />
-                            <PrimaryButton event={handleAddBookcase} txt="Save bookcase" /></React.Fragment> : null
+                            <PrimaryButton event={handleAddBookcase} txt="Save a bookcase" /></React.Fragment> : null
                     }
-                    <PrimaryButton event={handleAddBookcase} txt="Add a new book" />
-                    <div className="Bookcases-collection-wrapper">
+                    <PrimaryButton event={handleAddBook} txt="Add a new book" />
+                    <div className={classes}>
                         {
                             bookcasesIsLoaded ? bookcases.map((items, index) => {
                                 return <Bookcase {...items} key={index} />
                             }) : <p className="txt-primary">You have not created any bookcases.</p>
                         }
+                    </div>
+                    <div className={classes2}>
+                        <BookForm/>
                     </div>
                 </section>
             </main>
