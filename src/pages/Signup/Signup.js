@@ -1,32 +1,52 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import firebase from 'firebase';
+import firebaseConfig from '../../services/firebaseConfig';
+
+import React, { useState } from "react";
+import { useHistory } from 'react-router';
 
 import Input from '../../components/Input/Input';
 import Navbar from '../../components/Navbar/Navbar';
 import PrimaryButton from '../../components/Button/PrimaryButton';
 import Loader from '../../components/Loader/Loader';
 
-import getList from '../../helpers/getList';
-import { signUp } from '../../components/Header/inputList';
+//import axios from '../../services/axios';
+//import { signUp } from '../../components/Header/inputList';
+
+firebase.initializeApp(firebaseConfig);
+
 
 const Signup = () => {
-    const [userName, setUserName] = useState(null);
+    //const [userName, setUserName] = useState(null);
     const [loader, setLoader] = useState(false);
-    const [createdId, setCreatedId] = useState(false);
-    const [id, setId] = useState(null);
-    const url = `https://booksontheshelfbackend.herokuapp.com/botsab/reader`;
-    const method = 'POST';
-    const data = userName;
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState({ isError: false });
+    const [successMsg, setSuccessMsg] = useState({ isSuccess: false });
+    //const [createdId, setCreatedId] = useState(false);
+    //const [id, setId] = useState(null);
+    const history = useHistory();
 
-    const handleSignup = (e) => {
+    const handleSignup = e => {
         e.preventDefault();
         setLoader(true);
-        getList(data, url, method)
-            .then(data=>{
-                setId(data.id);
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(() => {
+                setLoader(false);
+                setErrorMsg({ isError: false});
+                setSuccessMsg({ isSuccess: true, message: "Your account has been created. You'll be redirected to the login page in a while..."})
+                window.setTimeout(()=>{ history.push("/login") }, 2500);
+            })
+            .catch(error => {
+                setLoader(false);
+                setErrorMsg({ isError: true, message: error.message });
+            });
+        /*axios.post('/reader', data)
+            .then(res=>{
+                setId(res.data.id);
                 setLoader(false);
                 setCreatedId(true);
             });
+            */
     }
 
     return (
@@ -34,19 +54,25 @@ const Signup = () => {
             <Navbar isMainPage={true} />
             <h2 className="heading--secondary">Create your account</h2>
             <form className="Login-form">
-                { loader ? <Loader /> :
-                                signUp.map((items, index) => {
-                                    return <Input event={(e) => { setUserName({ "name": e.target.value }) }} {...items} key={index} />
-                                })
-                }
-                <PrimaryButton txt="Confirm" event={(e)=> handleSignup(e)} />
                 {
-                    createdId ? <React.Fragment>
-                        <p className="txt-primary">Your ID has been assigned and it equals {id}.</p>
-                        <p className="txt-primary">Please, remember it. You'll need it to</p>
-                        <Link className="txt-primary" to="/login">LOG INTO YOUR ACCOUNT</Link>
-                    </React.Fragment> : null
+                    loader ? <Loader /> :
+                        <>
+                            <Input event={(e) => setEmail(e.target.value)} name="email" labelTxt="Your e-mail" type="email" />
+                            <Input event={(e) => setPassword(e.target.value)} name="password" labelTxt="Your password" type="password" />
+                            <PrimaryButton txt="Confirm" event={(e) => handleSignup(e)} />
+                        </>
                 }
+                {
+                    errorMsg.isError ?
+                        <p className="txt-primary">{errorMsg.message}</p>
+                        : null
+                }
+                {
+                    successMsg.isSuccess ?
+                    <p className="txt-primary">{successMsg.message}</p>
+                    : null
+                }
+
             </form>
         </React.Fragment>
     )
