@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import Input from "../../Input/Input";
-import PrimaryButton from "../../Button/PrimaryButton";
-import NavButton from "../../Button/NavButton";
+import Input from '../../components/Input/Input';
+import PrimaryButton from '../../components/Button/PrimaryButton';
+import NavButton from '../../components/Button/NavButton';
 
-import submitFile from "../functions/submitFile";
+import submitFile from '../../helpers/submitFile';
 
 import "./BookForm.scss";
 

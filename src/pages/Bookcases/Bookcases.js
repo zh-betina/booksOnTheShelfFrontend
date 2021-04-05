@@ -9,7 +9,7 @@ import Bookcase from "./Bookcase";
 import PrimaryButton from '../../components/Button/PrimaryButton';
 import Input from '../../components/Input/Input';
 import Loader from '../../components/Loader/Loader';
-//import BookForm from "./BookForm";
+import BookForm from "./BookForm";
 
 import "./Bookcases.scss";
 
