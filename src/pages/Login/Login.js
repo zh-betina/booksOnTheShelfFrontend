@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import Input from "../../Input/Input";
-import Navbar from "../../Navbar/Navbar";
-import PrimaryButton from "../../Button/PrimaryButton";
+import Input from '../../components/Input/Input';
+import Navbar from '../../components/Navbar/Navbar';
+import PrimaryButton from '../../components/Button/PrimaryButton';
 
-import { signIn } from "../../Header/inputList";
-import saveToLocalStorage from "../functions/saveToLocalStorage";
+import { signIn } from "../../components/Header/inputList";
+import saveToLocalStorage from '../../helpers/saveToLocalStorage';
 
 import "./Login.scss";
 

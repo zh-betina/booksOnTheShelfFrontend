@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import header from "./header.png";
-import PrimaryButton from "../Button/PrimaryButton";
+import PrimaryButton from '../Button/PrimaryButton';
 
-import { signIn, signUp } from "../Header/inputList";
-import saveToLocalStorage from "../Views/functions/saveToLocalStorage";
+import { signIn, signUp } from './inputList';
+import saveToLocalStorage from '../../helpers/saveToLocalStorage';
 
 
 import "./Header.scss";

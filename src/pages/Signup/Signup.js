@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import Input from "../../Input/Input";
-import Navbar from "../../Navbar/Navbar";
-import PrimaryButton from "../../Button/PrimaryButton";
-import Loader from "../../Loader/Loader";
+import Input from '../../components/Input/Input';
+import Navbar from '../../components/Navbar/Navbar';
+import PrimaryButton from '../../components/Button/PrimaryButton';
+import Loader from '../../components/Loader/Loader';
 
-import getList from "../functions/getList";
-import { signUp } from "../../Header/inputList";
+import getList from '../../helpers/getList';
+import { signUp } from '../../components/Header/inputList';
 
 const Signup = () => {
     const [userName, setUserName] = useState(null);

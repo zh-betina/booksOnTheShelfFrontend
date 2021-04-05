@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import getList from "../functions/getList";
-import submitFile from "../functions/submitFile";
+import getList from '../../helpers/getList';
+import submitFile from '../../helpers/submitFile';
 
-import Navbar from "../../Navbar/Navbar";
+import Navbar from '../../components/Navbar/Navbar';
 import ShelvesSvg from "./ShelvesSvg";
 import Bookcase from "./Bookcase";
-import PrimaryButton from "../../Button/PrimaryButton";
-import Input from "../../Input/Input";
-import Loader from "../../Loader/Loader";
+import PrimaryButton from '../../components/Button/PrimaryButton';
+import Input from '../../components/Input/Input';
+import Loader from '../../components/Loader/Loader';
 //import BookForm from "./BookForm";
 
 import "./Bookcases.scss";
