@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 
-import Navbar from "../../Navbar/Navbar";
-import BookList from "./BookList/BookList";
+import Navbar from '../../components/Navbar/Navbar';
+import BookList from './BookList/BookList';
 import BookItem from "./BookList/BookItem";
 
 import book from "./BookList/book.svg";

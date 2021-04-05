@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
 
+<<<<<<< HEAD:src/Views/Bookcases/Bookcases.js
 import getList from "../functions/getList";
+=======
+import getList from '../../helpers/getList';
+import submitFile from '../../helpers/submitFile';
+>>>>>>> dev:src/pages/Bookcases/Bookcases.js
 
-import Navbar from "../../Navbar/Navbar";
+import Navbar from '../../components/Navbar/Navbar';
 import ShelvesSvg from "./ShelvesSvg";
 import Bookcase from "./Bookcase";
+<<<<<<< HEAD:src/Views/Bookcases/Bookcases.js
 import PrimaryButton from "../../Button/PrimaryButton";
 import Input from "../../Input/Input";
 import Loader from "../../Loader/Loader";
 import BookForm from "./BookForm";
+=======
+import PrimaryButton from '../../components/Button/PrimaryButton';
+import Input from '../../components/Input/Input';
+import Loader from '../../components/Loader/Loader';
+//import BookForm from "./BookForm";
+>>>>>>> dev:src/pages/Bookcases/Bookcases.js
 
 import "./Bookcases.scss";
 
