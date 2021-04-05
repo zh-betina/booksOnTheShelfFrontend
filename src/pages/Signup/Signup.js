@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import firebaseConfig from '../../services/firebaseConfig';
 
 import React, { useState } from "react";
 import { useHistory } from 'react-router';
@@ -11,9 +10,6 @@ import Loader from '../../components/Loader/Loader';
 
 //import axios from '../../services/axios';
 //import { signUp } from '../../components/Header/inputList';
-
-firebase.initializeApp(firebaseConfig);
-
 
 const Signup = () => {
     //const [userName, setUserName] = useState(null);
