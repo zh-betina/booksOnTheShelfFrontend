@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { connect } from 'react-redux';
 
 import Navbar from '../../components/Navbar/Navbar';
 import BookList from './BookList/BookList';
@@ -69,10 +68,4 @@ const Profile = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        userId: state.id
-    };
-}
-
-export default connect(mapStateToProps)(Profile);
+export default Profile;
