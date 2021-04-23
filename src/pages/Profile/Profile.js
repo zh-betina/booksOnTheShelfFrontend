@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import React, { useState, useEffect } from "react";
 
 import Navbar from '../../components/Navbar/Navbar';
