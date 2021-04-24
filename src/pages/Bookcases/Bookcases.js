@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import getList from '../../helpers/getList';
-import submitFile from '../../helpers/submitFile';
+import { addBookcase } from '../../services/bookcaseServices';
 
 import Navbar from '../../components/Navbar/Navbar';
 import ShelvesSvg from "./ShelvesSvg";
@@ -15,7 +15,6 @@ import "./Bookcases.scss";
 
 const Bookcases = () => {
 
-    const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [bookcases, setBookcases] = useState(null);
     const [bookcaseName, setBookcaseName] = useState(null);
     const [inputVisible, setInputVisible] = useState(false);
@@ -32,23 +31,10 @@ const Bookcases = () => {
     }
 
     const handleAddBookcase = (e) => {
-        console.log("Bookcase name", bookcaseName);
         e.preventDefault();
-        let data = bookcaseName;
-        const method = "POST";
-        const url = `https://booksontheshelfbackend.herokuapp.com/botsab/bookcase`;
-        getList(data, url, method)
-            .then((data) => {
-                const url = `https://booksontheshelfbackend.herokuapp.com/botsab/addbookcasetoreader?id=${userId}&bookcaseId=${data.id}`;
-                data = undefined;
-                const method = "PUT";
-                getList(data, url, method)
-                    .then(() => {
-                        setInputVisible(false)
-                        setLoader(true)
-                        window.location.reload();
-                    });
-            });
+        setLoader(true);
+        addBookcase(bookcaseName);
+        setLoader(false);
     }
 
     const handleAddBook = (e) =>{
@@ -56,7 +42,7 @@ const Bookcases = () => {
         setBookcasesClass(" hidden");
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         let data;
         const method = "GET";
         const url = `https://booksontheshelfbackend.herokuapp.com/botsab/reader?id=${userId}`;
@@ -73,7 +59,7 @@ const Bookcases = () => {
                 };
                 setBookcases(loadedBookcases);
             });
-    }, []);
+    }, []);*/
     return (
         <React.Fragment>
             <Navbar isMainPage={false} />

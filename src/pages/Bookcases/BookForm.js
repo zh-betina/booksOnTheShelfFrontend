@@ -10,11 +10,11 @@ import "./BookForm.scss";
 
 
 const BookForm = () => {
-        const [authorVal, setAuthorVal] = useState("");
-        const [titleVal, setTitleVal] = useState("");
-        const [publisherVal, setPublisherVal] = useState("");
-        const [statusVal, setStatusVal] = useState("");
-        const [uploadedFile, setUploadedFile] = useState(null);
+        const [authorVal, setAuthorVal] = useState();
+        const [titleVal, setTitleVal] = useState();
+        const [publisherVal, setPublisherVal] = useState();
+        const [statusVal, setStatusVal] = useState();
+        const [uploadedFile, setUploadedFile] = useState();
 
         const handleFileSubmit = () => {
         let formData = new FormData();
